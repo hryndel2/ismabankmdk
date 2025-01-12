@@ -113,44 +113,45 @@
         }
     };
 
-    function loadQRCode(event) {
-        const fileInput = event.target;
-        if (fileInput.files.length > 0) {
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
+function loadQRCode(event) {
+    const fileInput = event.target;
+    if (fileInput.files.length > 0) {
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
 
-            // Отправка POST-запроса к API
-            fetch('http://api.qrserver.com/v1/read-qr-code/', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Обработка ответа от API
-                let result;
-                if (data && data.length > 0 && data[0].symbol.length > 0) {
-                    result = data[0].symbol[0].data;
-                } else {
-                    result = 'Не удалось распознать QR-код.';
-                }
+        // Измененный URL на HTTPS
+        fetch('https://api.qrserver.com/v1/read-qr-code/', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Обработка ответа от API
+            let result;
+            if (data && data.length > 0 && data[0].symbol.length > 0) {
+                result = data[0].symbol[0].data;
+            } else {
+                result = 'Не удалось распознать QR-код.';
+            }
 
-                // Проверка данных перед перенаправлением
-                const lines = result.split('\n');
-                if (lines.length >= 3 && lines[2].trim() === 'ismacode') {
-                    // Сохранение данных пользователя в localStorage
-                    localStorage.setItem('userData', result);
-                    // Перенаправление на страницу с результатом
-                    window.location.href = `main.html?data=${encodeURIComponent(result)}`;
-                } else {
-                    alert('То не тот QR-код');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка при сканировании QR-кода.');
-            });
-        }
+            // Проверка данных перед перенаправлением
+            const lines = result.split('\n');
+            if (lines.length >= 3 && lines[2].trim() === 'ismacode') {
+                // Сохранение данных пользователя в localStorage
+                localStorage.setItem('userData', result);
+                // Перенаправление на страницу с результатом
+                window.location.href = `main.html?data=${encodeURIComponent(result)}`;
+            } else {
+                alert('То не тот QR-код');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при сканировании QR-кода.');
+        });
     }
+}
+
 </script>
 
 </body>
