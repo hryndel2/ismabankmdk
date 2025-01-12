@@ -1,0 +1,332 @@
+﻿<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Банк
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <style>
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   body {
+     height: 80vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     color: white;
+     font-family: Arial, sans-serif;
+     align-items: center;
+   }
+
+   .background {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+   }
+
+   .background img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+   }
+
+   .header {
+     width: 100%;
+     height: 200px;
+     overflow: hidden;
+   }
+
+   .header-image {
+     width: 100%;
+     height: auto;
+   }
+
+   .container {
+     text-align: center;
+     background: rgba(0, 0, 0, 0.5);
+     padding: 20px;
+     border-radius: 10px;
+   }
+
+   .footer {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: fixed;
+     bottom: 0;
+   }
+
+   .footer-image {
+     width: 100%;
+     height: auto;
+   }
+
+   .footer-button {
+     display: flex;
+     align-items: center;
+     margin: 0 10px;
+     transform: translateY(-10px);
+   }
+
+   .button-image {
+     width: 80px;
+     height: auto;
+   }
+
+   .welcome-text {
+     height: auto;
+     position: absolute;
+     top: 20px;
+     left: 20px;
+     font-size: 34px;
+     font-weight: bold;
+     text-align: left;
+   }
+
+   .chart-container {
+    background: rgba(0, 0, 0, 0.5) url('doska.png') no-repeat center; /* Замените 'your-image-url.jpg' на URL вашего изображения */
+    background-size: cover;
+     border-radius: 15px;
+     padding: 20px;
+     margin-top: 100px;
+     width: 80%;
+     max-width: 400px;
+     min-height: 175px;
+     height: auto;
+     text-align: left;
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+	 color:white;
+   }
+
+   .chart-title {
+     font-size: 24px;
+     font-weight: bold;
+     color: white;
+   }
+
+   .chart-subtitle {
+     font-size: 25px;
+     font-weight: bold;
+     color: white;
+   }
+
+   .chart-amount {
+     font-size: 22px;
+     font-weight: bold;
+     color: white;
+   }
+
+   .expense-container {
+    background: rgba(0, 0, 0, 0.5) url('acs.png') no-repeat center; /* Замените 'your-image-url.jpg' на URL вашего изображения */
+    background-size: cover;
+     border-radius: 15px;
+     padding: 10px;
+     margin-top: 20px;
+     width: 80%;
+     max-width: 400px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+   }
+
+   .expense-avatar {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     margin-right: 10px;
+   }
+
+   .expense-info {
+     flex-grow: 1;
+   }
+
+   .expense-title {
+     font-size: 18px;
+     font-weight: bold;
+     color: white;
+   }
+
+   .expense-date {
+     font-size: 14px;
+     color: white;
+   }
+
+   .expense-amount {
+     font-size: 18px;
+     font-weight: bold;
+     color: white;
+   }
+  </style>
+ </head>
+ <body>
+  <div class="background">
+   <img alt="Background image of a scenic landscape" src="back.jpg"/>
+  </div>
+  <div class="welcome-text">
+   <p>
+    History
+   </p>
+  </div>
+  <div class="chart-container">
+    <div class="mt-4">
+     <canvas height="200" id="expensesChart" width="400">
+     </canvas>
+    </div>
+   </div>
+  </div>
+<div class="expense-container">
+   <img alt="Расходы в Бургер-Кинг" class="expense-avatar" src="pig.jpeg"/>
+   <div class="expense-info">
+      <p class="expense-title">
+         Бургер-Кинг
+      </p>
+      <p class="expense-date">
+         2025-10-01
+      </p>
+   </div>
+   <p class="expense-amount">
+      -$100
+   </p>
+</div>
+<div class="expense-container">
+   <img alt="Расходы в Шашлычной" class="expense-avatar" src="pig.jpeg"/>
+   <div class="expense-info">
+      <p class="expense-title">
+         Шашлычная
+      </p>
+      <p class="expense-date">
+         2025-10-02
+      </p>
+   </div>
+   <p class="expense-amount">
+      -$200
+   </p>
+</div>
+<div class="expense-container">
+   <img alt="Расходы в Арам Шоп" class="expense-avatar" src="pig.jpeg"/>
+   <div class="expense-info">
+      <p class="expense-title">
+         Арам Шоп
+      </p>
+      <p class="expense-date">
+         2025-10-03
+      </p>
+   </div>
+   <p class="expense-amount">
+      -$300
+   </p>
+</div>
+<div class="expense-container">
+   <img alt="Расходы в Электронике" class="expense-avatar" src="pig.jpeg"/>
+   <div class="expense-info">
+      <p class="expense-title">
+         Электроника
+      </p>
+      <p class="expense-date">
+         2024-10-04
+      </p>
+   </div>
+   <p class="expense-amount">
+      -$400
+   </p>
+</div>
+<div class="expense-container">
+   <img alt="Расходы в Книжном магазине" class="expense-avatar" src="pig.jpeg"/>
+   <div class="expense-info">
+      <p class="expense-title">
+         Книжный магазин
+      </p>
+      <p class="expense-date">
+         2024-10-05
+      </p>
+   </div>
+   <p class="expense-amount">
+      -$500
+   </p>
+</div>
+    <footer class="footer">
+        <img src="footer.png" alt="Футер" class="footer-image"> <!-- Замените на URL вашей картинки футера -->
+        <footer class="footer">
+        <a href="main.html" class="footer-button">
+            <img src="home.png" alt="Кнопка 1" class="button-image"> <!-- Замените на URL вашей первой кнопки -->
+        </a>
+        <a href="friend.html" class="footer-button">
+            <img src="friend.png" alt="Кнопка 2" class="button-image"> <!-- Замените на URL вашей второй кнопки -->
+        </a>
+		<a href="#" class="footer-button">
+            <img src="mail.png" alt="Кнопка 3" class="button-image"> <!-- Замените на URL вашей третьей кнопки -->
+        </a>
+		<a href="#" class="footer-button" id="logoutButton">
+            <img src="exit.png" alt="ВЫход" class="button-image"> <!-- Замените на URL вашей третьей кнопки -->
+        </a>
+    </footer>
+<script>
+   const ctx = document.getElementById('expensesChart').getContext('2d');
+   const expensesChart = new Chart(ctx, {
+     type: 'line',
+     data: {
+       labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнб', 'Июль'],
+       datasets: [{
+         label: 'График затрат',
+         data: [1200, 1900, 3000, 500, 2000, 3000, 4500],
+         backgroundColor: 'rgba(255, 99, 132, 0.2)',
+         borderColor: 'rgba(255, 99, 132, 1)',
+         borderWidth: 1
+       }]
+     },
+     options: {
+       scales: {
+         y: {
+           beginAtZero: true,
+           ticks: {
+             color: 'white', // Устанавливаем цвет текста меток оси Y на белый
+             font: {
+               weight: 'bold' // Устанавливаем жирный шрифт для меток оси Y
+             }
+           }
+         },
+         x: {
+           ticks: {
+             color: 'white', // Устанавливаем цвет текста меток оси X на белый
+             font: {
+               weight: 'bold' // Устанавливаем жирный шрифт для меток оси X
+             }
+           }
+         }
+       },
+       plugins: {
+         legend: {
+           labels: {
+             color: 'white', // Устанавливаем цвет текста легенды на белый
+             font: {
+               weight: 'bold' // Устанавливаем жирный шрифт для текста легенды
+             }
+           }
+         }
+       }
+     }
+   });
+   	document.getElementById('logoutButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        localStorage.removeItem('userData'); // Удаляем данные пользователя
+        window.location.href = 'index.html'; // Перенаправляем на страницу входа
+    });
+</script>
+ </body>
+</html>

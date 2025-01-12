@@ -1,0 +1,328 @@
+﻿<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Банк
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <style>
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            font-family: Arial, sans-serif;
+			            align-items: center
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .header-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .footer-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .footer-button {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            transform: translateY(-10px);
+        }
+
+        .button-image {
+            width: 80px;
+            height: auto;
+        }
+
+        .welcome-text {
+            height: auto;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 34px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .balance-container {
+            background-image: url('card.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 100px;
+            width: 80%;
+            max-width: 400px;
+            min-height: 175px;
+            height: auto;
+            text-align: left;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .balance-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .balance-subtitle {
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .balance-amount {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+.stock-container {
+    background: rgba(0, 0, 0, 0.5) url('acs.png') no-repeat center; /* Замените 'your-image-url.jpg' на URL вашего изображения */
+    background-size: cover; /* Это позволит изображению покрывать весь контейнер */
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 80%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Центрирование содержимого акций */
+}
+
+        .stock-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .stock-info {
+            flex-grow: 1;
+        }
+
+        .stock-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stock-date {
+            font-size: 14px;
+            color: white;
+        }
+
+        .stock-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="background">
+   <img alt="Background image of a scenic landscape" src="back.jpg"/>
+  </div>
+    <div class="welcome-text" id="welcomeText"><p>
+        <!-- Здесь будет отображаться приветствие -->
+    </p>
+		 <button id="logoutButton" style="margin-left: 10px; padding: 5px 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">Выйти</button>
+		
+	
+	</div>
+
+  <div class="balance-container">
+   <p class="balance-title">
+    Aram Bank
+   </p>
+   <div>
+    <p class="balance-subtitle">
+     Total Balance
+    </p>
+    <p class="balance-amount">
+     2.000$
+    </p>
+   </div>
+  </div>
+  <div class="stock-container">
+   <img alt="Stock avatar 1" class="stock-avatar" src="pig.jpeg"/>
+   <div class="stock-info">
+    <p class="stock-title">
+     PiG 1
+    </p>
+    <p class="stock-date">
+     2025-10-01
+    </p>
+   </div>
+   <p class="stock-price">
+    $100
+   </p>
+  </div>
+  <div class="stock-container">
+   <img alt="Stock avatar 2" class="stock-avatar" src="pig.jpeg"/>
+   <div class="stock-info">
+    <p class="stock-title">
+     PiG 2
+    </p>
+    <p class="stock-date">
+     2025-10-02
+    </p>
+   </div>
+   <p class="stock-price">
+    $200
+   </p>
+  </div>
+  <div class="stock-container">
+   <img alt="Stock avatar 3" class="stock-avatar" src="pig.jpeg"/>
+   <div class="stock-info">
+    <p class="stock-title">
+     PiG 3
+    </p>
+    <p class="stock-date">
+     2025-10-03
+    </p>
+   </div>
+   <p class="stock-price">
+    $300
+   </p>
+  </div>
+  <div class="stock-container">
+   <img alt="Stock avatar 4" class="stock-avatar" src="pig.jpeg"/>
+   <div class="stock-info">
+    <p class="stock-title">
+     PiG 4
+    </p>
+    <p class="stock-date">
+     2024-10-04
+    </p>
+   </div>
+   <p class="stock-price">
+    $400
+   </p>
+  </div>
+  <div class="stock-container">
+   <img alt="Stock avatar 5" class="stock-avatar" src="pig.jpeg"/>
+   <div class="stock-info">
+    <p class="stock-title">
+     PiG 5
+    </p>
+    <p class="stock-date">
+     2024-10-05
+    </p>
+   </div>
+   <p class="stock-price">
+    $500
+   </p>
+  </div>
+    <footer class="footer">
+        <img src="footer.png" alt="Футер" class="footer-image"> <!-- Замените на URL вашей картинки футера -->
+        <footer class="footer">
+        <a href="main.html" class="footer-button">
+            <img src="home.png" alt="Кнопка 1" class="button-image"> <!-- Замените на URL вашей первой кнопки -->
+        </a>
+        <a href="friend.html" class="footer-button">
+            <img src="friend.png" alt="Кнопка 2" class="button-image"> <!-- Замените на URL вашей второй кнопки -->
+        </a>
+        <a href="#" class="footer-button">
+            <img src="mail.png" alt="Кнопка 3" class="button-image"> <!-- Замените на URL вашей третьей кнопки -->
+        </a>
+		<a href="#" class="footer-button" id="logoutButton">
+            <img src="exit.png" alt="ВЫход" class="button-image"> <!-- Замените на URL вашей третьей кнопки -->
+        </a>
+    </footer>
+	    <script>
+		 const userData = localStorage.getItem('userData');
+        // Функция для получения параметров из URL
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const regex = /([^&=]+)=([^&]*)/g;
+            let m;
+            while (m = regex.exec(queryString)) {
+                params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+            return params;
+        }
+
+        // Получаем данные из URL
+        const params = getQueryParams();
+        const data = params.data;
+
+    if (userData) {
+        const lines = userData.split('\n');
+        if (lines.length >= 3) {
+            const name = lines[0].trim();
+            const code = lines[2].trim();
+
+            if (code === 'ismacode') {
+                document.getElementById('welcomeText').innerHTML = `Hi ${name}`;
+            } else {
+                document.getElementById('welcomeText').innerHTML = 'То не тот QR-код';
+            }
+        } else {
+            document.getElementById('welcomeText').innerHTML = 'Некорректные данные QR-кода';
+        }
+    } else {
+        document.getElementById('welcomeText').innerHTML = 'Данные не получены';
+    }
+	    document.getElementById('logoutButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        localStorage.removeItem('userData'); // Удаляем данные пользователя
+        window.location.href = 'index.html'; // Перенаправляем на страницу входа
+    });
+    </script>
+ </body>
+</html>
